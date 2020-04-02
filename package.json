@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "webpack": "webpack --watch",
+    "prestart": "npm run webpack",
     "build": "npm run webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node seeders/seeds.js",
