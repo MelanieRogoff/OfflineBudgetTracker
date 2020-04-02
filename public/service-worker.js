@@ -1,5 +1,3 @@
-console.log("Hello from service worker!");
-
 const FILES_TO_CACHE = [
     '/',
     '/public/style.css',
@@ -11,8 +9,7 @@ const FILES_TO_CACHE = [
     '/dist/icon_192x192x.png',
     '/dist/icon_384x384.png',
     'index.html',
-    '/dist/manifest.json',
-
+    '/dist/manifest.json'
   ];
   
   const STATIC_CACHE = "static-cache-v1";
