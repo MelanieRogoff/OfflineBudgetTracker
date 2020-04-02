@@ -8,8 +8,7 @@ const cacheName = 'v1';
   //Call Activate Event
   self.addEventListener('activate', event => {
       console.log("Service Worker Activated");
-      //Remove unwanted caches 
-      event.waitUntil(
+      event.waitUntil( //Remove unwanted caches 
           caches.keys().then(cacheNames => {
               return Promise.all(
                   cacheNames.map(cache => {
@@ -24,23 +23,17 @@ const cacheName = 'v1';
   });
 
   //Call Fetch Event
-
   self.addEventListener('fetch', event => {
       console.log("Service Worker: Fetching");
       event.respondWith(
           fetch(
-        //       event.request)//if no connection, this will fail
-        //   .catch(() => caches.match(e.request))
         event.request)
         .then(res => {
-            //Make copy/clone of response
-            const resClone = res.clone();
-            //Open cache
+            const resClone = res.clone(); //Make copy/clone of response
             caches
-                .open(cacheName)
+                .open(cacheName)//Open cache
                 .then(cache => {
-                    //Add response to cache
-                    cache.put(event.request, resClone);
+                    cache.put(event.request, resClone);//Add response to cache
                 });
                 return res;
         })
