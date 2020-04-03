@@ -1,5 +1,6 @@
 let transactions = [];
 let myChart;
+const saveRecord = require("./saveRecord.js");
 
 fetch("/api/transaction")
   .then(response => {
@@ -136,7 +137,7 @@ function sendTransaction(isAdding) {
   })
   .catch(err => {
     // fetch failed, so save in indexed db
-    saveRecord(transaction);
+    saveRecord.saveRecord(transaction);
 
     // clear form
     nameEl.value = "";
@@ -151,3 +152,4 @@ document.querySelector("#add-btn").onclick = function() {
 document.querySelector("#sub-btn").onclick = function() {
   sendTransaction(false);
 };
+
