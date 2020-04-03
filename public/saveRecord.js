@@ -25,7 +25,7 @@ function onSuccessRequest(transaction) { //making a function FOR all of this
         budgetStorage.add({ name: transaction.name, value: transaction.value, date: transaction.date });
  
   // Return an item by keyPath
-        const getRequest = budgetStorage.get("1");
+        const getRequest = budgetStorage.get();
             getRequest.onsuccess = () => {
                 console.log(getRequest.result);
         };
