@@ -19,7 +19,8 @@ export default function saveRecord(transaction) {//this function needs to get th
         };
         const getRequestIdx = budgetStorage.getAll(); //return item by index
             getRequestIdx.onsuccess = () => {
-                console.log(getRequestIdx.result); 
+                const results = getRequestIdx.result
+                console.log(results); 
             }; 
     };
 }
