@@ -1,7 +1,6 @@
 let transactions = [];
 let myChart;
 import saveRecord from "./saveRecord.js";
-import { results } from "./saveRecord.js";
 
  // also send to server
  fetch("/", {
@@ -15,8 +14,6 @@ import { results } from "./saveRecord.js";
   .then(response => {    
     return response.json();
   })
-
-
 
 
 fetch("/api/transaction")
