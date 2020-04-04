@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node seeders/seeds.js",
     "start": "node server.js",
-    "heroku-postbuild": "webpack -p",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress",
     "lite-server": "lite-server"
   },
   "repository": {
