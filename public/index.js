@@ -2,19 +2,7 @@ let transactions = [];
 let myChart;
 import saveRecord from "./saveRecord.js";
 
- // also send to server
- fetch("/", {
-    method: "POST",
-    body: JSON.stringify(saveRecord.results),
-    headers: {
-      Accept: "application/json, text/plain, */*",
-      "Content-Type": "application/json"
-    }
-  })
-  .then(response => {    
-    return response.json();
-  })
-
+console.log(res, "HALLLOOOO")
 
 fetch("/api/transaction")
   .then(response => {
