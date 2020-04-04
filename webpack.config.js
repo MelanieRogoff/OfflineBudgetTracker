@@ -4,17 +4,15 @@ const path = require("path");
 const config = {
     entry: "./public/index.js",
     output: {
-        path: __dirname + "/dist",
+        path: __dirname + "/public/dist",
         filename: "bundle.js"
   },
   mode: "development",
   plugins: [
     new WebpackPwaManifest({
-      // the name of the generated manifest file
-      filename: "manifest.json",
+      filename: "manifest.json", //name of generated manifest file
 
-      // we aren't using webpack to generate our html so we
-      // set inject to false
+      // we aren't using webpack to generate our html so set inject to false
       inject: false,
 
       // set fingerprints to `false` to make the names of the generated

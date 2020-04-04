@@ -10,7 +10,8 @@ const FILES_TO_CACHE = [
     "/dist/manifest.json",
     "/index.html",
     "/styles.css",
-    "/api/transaction"
+    "/api/transaction",
+    "/saveRecord.js"
   ];
   
   const STATIC_CACHE = "static-cache-v1";
