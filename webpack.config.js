@@ -32,8 +32,7 @@ const config = {
             __dirname,
             "public/icons/icon-512x512.png"
             ),
-          // the plugin will generate an image for each size
-          // included in the size array
+          //plugin will generate an image for each size in the size array
           size: [192, 96, 128, 144, 152, 192, 384]
         }
       ]
