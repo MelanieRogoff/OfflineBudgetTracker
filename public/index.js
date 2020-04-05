@@ -2,15 +2,12 @@ let transactions = [];
 let myChart;
 import saveRecord from "./saveRecord.js";
 
-console.log(res, "HALLLOOOO")
-
 fetch("/api/transaction")
   .then(response => {
     return response.json();
   })
   .then(data => {
-    // save db data on global variable
-    transactions = data;
+    transactions = data; // save db data on global variable
 
     populateTotal();
     populateTable();
@@ -18,9 +15,8 @@ fetch("/api/transaction")
   });
 
 function populateTotal() {
-  // reduce transaction amounts to a single total value
-  let total = transactions.reduce((total, t) => {
-    return total + parseInt(t.value);
+  let total = transactions.reduce((total, t) => { //reduce transaction amounts 
+    return total + parseInt(t.value); //to a single total value
   }, 0);
 
   let totalEl = document.querySelector("#total");
@@ -32,36 +28,30 @@ function populateTable() {
   tbody.innerHTML = "";
 
   transactions.forEach(transaction => {
-    // create and populate a table row
-    let tr = document.createElement("tr");
+    let tr = document.createElement("tr"); //create & populate a table row
     tr.innerHTML = `
       <td>${transaction.name}</td>
       <td>${transaction.value}</td>
     `;
-
     tbody.appendChild(tr);
   });
 }
 
 function populateChart() {
-  // copy array and reverse it
-  let reversed = transactions.slice().reverse();
+  let reversed = transactions.slice().reverse(); //copy array & reverse it
   let sum = 0;
 
-  // create date labels for chart
-  let labels = reversed.map(t => {
+  let labels = reversed.map(t => { //create date labels for chart
     let date = new Date(t.date);
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
   });
 
-  // create incremental values for chart
-  let data = reversed.map(t => {
+  let data = reversed.map(t => { //create incremental values for chart
     sum += parseInt(t.value);
     return sum;
   });
 
-  // remove old chart if it exists
-  if (myChart) {
+  if (myChart) { //remove old chart if it exists
     myChart.destroy();
   }
 
@@ -95,23 +85,20 @@ function sendTransaction(isAdding) {
     errorEl.textContent = "";
   }
 
-  // create record
-  let transaction = {
+  let transaction = { //create record
     name: nameEl.value,
     value: amountEl.value,
     date: new Date().toISOString()
   };
 
-  // if subtracting funds, convert amount to negative number
-  if (!isAdding) {
+  if (!isAdding) { //if subtracting funds, convert amount to negative #
     transaction.value *= -1;
   }
 
   // add to beginning of current array of data
   transactions.unshift(transaction);
-
-  // re-run logic to populate ui with new record
-  populateChart();
+  
+  populateChart(); //re-run logic to populate UI w/new record
   populateTable();
   populateTotal();
   

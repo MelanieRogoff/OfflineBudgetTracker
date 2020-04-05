@@ -50,16 +50,6 @@
         .catch(err => console.log(`Service Worker: Error: ${err}`))
         })
     }
-
-    function isOnline() {
-        let conStatus = document.getElementById('conStat');
-        conStatus.style.display = 'none';
-        if (!navigator.online) {
-            conStatus.style.display = 'block'
-        }
-    }
-    window.addEventListener('online', isOnline);
-    window.addEventListener('offline', isOnline)
   </script>
 
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
